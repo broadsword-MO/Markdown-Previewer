@@ -1,0 +1,225 @@
+@import url('https://fontlibrary.org//face/carlito');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@500&display=swap');
+
+:root {
+    /* ==== Colors ==== */
+    --light-green: #adc178;
+    --medium-green: #408040;
+    --black: #333;
+    --dark-color: #73746d;
+    --medium-color: #ceceb3;
+    --light-color: #ededdf;
+
+    /* ==== Sizes ==== */
+    --header-height: 4rem;
+    --b-radius: 0.4rem;
+    --small-space: 0.3em; /* @ 5px */
+    --medium-space: 0.7em; /* @ 10px */
+    --large-space: 1.4em; /* @ 20px */
+
+    /* ==== Font stuff ==== */
+    font-family: 'Franklin Gothic Medium', 'Libre Franklin', 'Arial Narrow',
+        Arial, sans-serif;
+    font-size: min(max(12px, 1vw), 22px);
+    color: var(--black);
+}
+
+* {
+    /* No universal margin or padding reset, bc of markdown formatter. Resets in certain classes as necessary */
+    box-sizing: border-box;
+    /* outline: 1px solid red; /* For debugging purposes */
+}
+
+body {
+    margin: 0;
+}
+
+.App {
+    background-color: var(--light-green);
+    /* @NOTE Another option for showing markdown line-breaks: Use white-space: pre-wrap or pre-line below */
+    /* white-space: pre-wrap; */
+}
+
+.header-cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    padding: var(--small-space);
+    min-height: var(--header-height);
+    background-color: var(--light-green);
+    box-shadow: 0 1px 10px 0 var(--black);
+}
+
+.headers {
+    text-align: center;
+    font-family: Carlito;
+}
+
+.main-header {
+    margin: 0;
+    padding: 0.2em;
+    /* text-align: left; */
+    /* margin-top: 20px; */
+    font-size: 2.2rem;
+}
+
+.toggle {
+    margin: 0.4em;
+    margin-left: 0;
+    padding: 0.5em;
+    border-radius: var(--b-radius);
+}
+
+.sec-header {
+    background-color: var(--dark-color);
+    font-size: 2rem;
+    font-weight: 400;
+    color: var(--light-color);
+    padding: var(--small-space);
+    margin: 0 0 var(--medium-space);
+    outline: 4px solid var(--light-green);
+    border-radius: var(--b-radius);
+}
+
+.editor,
+.previewer {
+    padding: var(--large-space);
+    width: 100%;
+    min-height: calc(100vh - (var(--header-height) + 2px));
+    box-shadow: 0 2px 10px 0 var(--black);
+}
+
+.editor {
+    background-color: var(--medium-color);
+}
+
+.editor-textarea {
+    display: block;
+    background-color: var(--light-color);
+    font-size: 1.4rem;
+    padding: var(--medium-space);
+    width: 100%;
+    height: calc(100vh - 14rem); /* Using vh necessary */
+    border: 1px solid gray;
+    resize: vertical;
+}
+
+.previewer {
+    background-color: var(--medium-color);
+}
+
+.preview-text {
+    font-size: 1.5rem;
+}
+
+/* Markdown styling (HTML elements that are visible after formatting) */
+code {
+    /* Inline code */
+    background-color: var(--light-color);
+    padding: var(--small-space);
+}
+
+pre {
+    /* Code block ('pre' formatted text) */
+    padding: var(--small-space);
+    line-height: 1.5;
+    background-color: var(--light-color);
+}
+
+table {
+    border-collapse: collapse;
+    margin: var(--medium-space);
+}
+
+table * {
+    padding: var(--small-space);
+    border: 1px solid var(--black);
+}
+
+blockquote {
+    padding: 0 var(--medium-space);
+    border: 1px solid var(--black);
+    border-left: 7px solid var(--medium-green);
+}
+
+a {
+    color: var(--medium-green);
+    padding: var(--small-space);
+    border-radius: var(--b-radius);
+    transition: all 0.5s;
+}
+
+a:focus,
+a:hover {
+    outline: .3em solid var(--medium-green);
+}
+
+img {
+    display: block;
+    width: 80%;
+    margin-left: 10%;
+}
+
+/* Media queries */
+@media only screen and (min-width: 450px) {
+    .flex-centering-wrapper {
+        width: 80%;
+        margin: 0 10%;
+    }
+}
+
+@media only screen and (min-width: 801px) {
+    .App {
+        display: flex;
+        justify-content: center;
+    }
+
+    .flex-centering-wrapper {
+        min-width: 800px;
+        width: 70%;
+    }
+
+    .header-cont {
+        position: relative;
+        margin-top: 2em;
+        height: auto;
+        justify-content: center;
+        box-shadow: none;
+    }
+
+    .main-header {
+        font-size: 3rem;
+    }
+
+    .toggle {
+        display: none;
+    }
+
+    .sec-header {
+        font-size: 2.5rem;
+    }
+
+    .text-container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .editor,
+    .previewer {
+        margin: var(--large-space);
+        border-radius: var(--b-radius);
+        flex: 1;
+    }
+
+    .editor {
+        height: auto;
+    }
+
+    .editor-textarea {
+        min-height: 92%;
+    }
+}
